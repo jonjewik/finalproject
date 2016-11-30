@@ -8,7 +8,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          
+        <span><i className="fa fa-newspaper-o fa-5x App-logo" aria-hidden="true"></i></span>
+
           <h2>[untitled social justice resource center]</h2>
         </div>
         <p className="App-intro">
