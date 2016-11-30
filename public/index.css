@@ -1,0 +1,23 @@
+#results:hover { 
+background: #3d91b8; 
+color: #ffffff; 
+padding: 3px; 
+text-align: center; 
+width: 200px; 
+cursor: pointer; 
+border: 1px solid gray; 
+} 
+
+#results { 
+background: #dddada; 
+color: 000000; 
+padding: 3px; 
+text-align: center; 
+width: 200px; 
+cursor: pointer; 
+border: 1px solid gray; 
+}
+
+#category1 { 
+display: none; 
+}
