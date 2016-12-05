@@ -3,7 +3,31 @@ import logo from './logo.svg';
 import './App.css';
 import {Navbar, FormControl, FormGroup, Button} from 'react-bootstrap';
 
+import DataController from './DataController';
+
 class App extends Component {
+  constructor(props) {
+		super(props);
+		This.state = {
+			Subject: '',
+			Date: '',
+			Form: ''
+		};
+		This.[method] = this.[method].bind(this);
+  }
+
+
+  fetchContent(search) {
+    var firstThis = this; // necessary??
+      DataController.____(search)
+      .then(function(data) {
+        firstThis.setState({
+        Subject: ____;
+      }
+    )
+  })
+  }    // ?????????
+
   render() {
     return (
       <div className="App">
