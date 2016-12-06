@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {Navbar, FormControl, FormGroup, Button, Panel} from 'react-bootstrap';
 import DataController from './DataController';
+// no error thrown if incorrect date format or search word inputted, simply returns error
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -65,7 +66,7 @@ class App extends React.Component {
           <h2>[untitled social justice resource center]</h2>
         </div>
         <p className="App-intro">
-          Stay up to date on current events.
+          "Stay up to date on current events"
         </p>
         <Navigation getSearch={this.fetchContent} getDate={this.setDate}/>
         <Content getSearch={this.fetchContent} subject={this.state.subject}/>
@@ -113,7 +114,7 @@ class Navigation extends React.Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">[untitled]</a>
+            <a href="#">Search</a>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>

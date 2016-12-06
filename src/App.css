@@ -16,10 +16,15 @@
 
 .App-intro {
   font-size: large;
+  font-style: italic;
 }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.panel-heading {
+  font-style: bold;
 }
 
