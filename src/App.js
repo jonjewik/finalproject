@@ -149,10 +149,12 @@ class Card extends React.Component {
   render() {
     return (
       <div className="artCard">
+        <a href={this.props.art.web_url}>
         <Panel className="songList" header={this.props.art.headline.main}>
           <img className="albmImg"  alt="thumbnail"/>
           <p>{this.props.art.snippet}</p>
         </Panel>
+        </a>
       </div>
     );
   }
