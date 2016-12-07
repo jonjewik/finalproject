@@ -127,7 +127,7 @@ class Navigation extends React.Component {
             <FormGroup>
               <FormControl type="text" placeholder="YYYYMMDD" onChange={this.startDate}/>
             </FormGroup>
-            <Button type="submit" onClick={this.searchClick}>Submit</Button>
+            <Button type="submit" onClick={this.searchClick}>Search</Button>
           </Navbar.Form>
         </Navbar.Collapse>
       </Navbar>
