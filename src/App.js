@@ -55,7 +55,7 @@ class App extends React.Component {
       <div className="App">
         <div className="App-header">
           <span><i className="fa fa-newspaper-o fa-5x App-logo" aria-hidden="true"></i></span>
-          <h2>untitled social justice resource center</h2>
+          <h2>Social Justice Resource Center</h2>
         </div>
         <p className="App-intro">
           "Stay up to date on current events"
