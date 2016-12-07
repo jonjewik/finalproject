@@ -21,7 +21,7 @@ class Resources extends React.Component {
       <h4> Equality </h4>
       <p>
         <ul>
-          <li><a href="http://www.glbthotline.org/hotline.html">GLBT Hotline: 1-888-843-4564</a></li>
+          <li><a href="http://www.glbthotline.org/hotline.html">GLBT Hotline: <a href="tel:18888434564">1-888-843-4564</a></a></li>
           <li><a href="http://www.aclu.org">American Civil Liberties Union (ACLU)</a></li>
           <li><a href="http://www.racialequityresourceguide.org">Racial Equity Resource Guide</a></li>
           <li><a href="https://www.racialequitytools.org/home">Racial Equity Tools</a></li>
