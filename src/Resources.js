@@ -40,9 +40,9 @@ class Resources extends React.Component {
       <h4> Abuse Victims </h4>
       <p>
         <ul>
-          <li><a href="http://www.thehotline.org/resources/">National Domestic Violence Hotline: 1-800-799-7233</a></li>
-          <li><a href="http://www.stopstreetharassment.org/our-work/nationalshhotline/">National Street Harassment Hotline: 855-897-5910</a></li>
-          <li><a href="http://www.childhelp.org/">National Child Abuse Hotline: 800-422-2253</a></li>
+          <li><a href="http://www.thehotline.org/resources/">National Domestic Violence Hotline: <a href="tel:+18007997233">1-800-799-7233</a></a></li>
+          <li><a href="http://www.stopstreetharassment.org/our-work/nationalshhotline/">National Street Harassment Hotline: <a href="tel:+8558975910">855-897-5910</a></a></li>
+          <li><a href="http://www.childhelp.org/">National Child Abuse Hotline: <a href="tel:8004222253">800-422-2253</a></a></li>
           <li><a href="http://www.ncadv.org/">National Coalition against Domestic Violence</a></li>
           <li><a href="http://www.notalone.gov/">NotAlone.gov</a></li>
         </ul>
@@ -51,7 +51,7 @@ class Resources extends React.Component {
       <h4> Rape and Sexual Assault </h4>
       <p>
         <ul>
-          <li><a href="http://www.rainn.org/get-help/national-sexual-assault-hotline">National Sexual Assault Hotline: 1-800-656-HOPE</a></li>
+          <li><a href="http://www.rainn.org/get-help/national-sexual-assault-hotline">National Sexual Assault Hotline: <a href="tel:+18006564673">1-800-656-HOPE</a></a></li>
           <li><a href="http://www.nsvrc.org/">National Sexual Violence Resource Center</a></li>
           <li><a href="http://nsopw.gov/Core/Conditions.aspx">National Sex Offender Registry</a></li>
         </ul>
@@ -60,7 +60,7 @@ class Resources extends React.Component {
       <h4> Muslims </h4>
       <p>
         <ul>
-          <li><a href="http://www.mrcssi.com">Muslim Resouece Center</a></li>
+          <li><a href="http://www.mrcssi.com">Muslim Resource Center</a></li>
           <li><a href="http://www.api-gbv.org/organizing/manadv.php">Muslim Advocacy Network</a></li>
           <li><a href="http://www.mwrcnfp.org">Muslim Women Resource Center</a></li>
         </ul>
