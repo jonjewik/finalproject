@@ -30,5 +30,7 @@
   display: block;
 }
 
-
+.panel-heading {
+  font-size: 2rem;
+}
 

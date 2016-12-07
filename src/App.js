@@ -168,8 +168,8 @@ class Card extends React.Component {
       
       <div className="artCard">
         <a href={this.props.art.web_url}>
-        <Panel className="songList" header={this.props.art.headline.main}>
-          <img className="albmImg"  alt="thumbnail"/>
+        <Panel className="artPanel" header={this.props.art.headline.main}>
+          <h4 content={this.props.art.byline.original}>{this.props.art.byline.original}</h4>
           <p>{this.props.art.snippet}</p>
         </Panel>
         </a>
