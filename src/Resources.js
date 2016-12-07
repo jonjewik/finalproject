@@ -1,12 +1,13 @@
 import React from 'react';
 import _ from 'lodash';
 import { Carousel, Button } from 'react-bootstrap';
+import './Resources.css';
 
 class Resources extends React.Component {
   render() {
     return (
-      <div>
-      <h3> Resources </h3>
+      <div id = "resources">
+      <h3 > Resources </h3>
       <h4> LGBTQ </h4>
       <p>
         <ul>
