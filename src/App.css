@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 225px;
   padding: 20px;
   color: white;
 }
@@ -24,7 +24,12 @@
   to { transform: rotate(360deg); }
 }
 
-.panel-heading {
-  font-style: bold;
+
+.artCard {
+  flex: wrap;
+  align-content: center;
+  padding: 10px;
+  display: block;
 }
+
 
