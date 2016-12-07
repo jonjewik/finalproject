@@ -1,5 +1,5 @@
 var baseApiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-var apiKey = 'ea2962f859ad4ef4b1e89386e60a9b94';
+var apiKey = 'faeda89dccac41c0b4f024b6a956b909';
 //var query = "";
 
 // ex: https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=ea2962f859ad4ef4b1e89386e60a9b94&q=black+lives+matter
