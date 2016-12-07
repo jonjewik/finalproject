@@ -3,8 +3,11 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
+import {Link} from 'react-router';
 import {Navbar, FormControl, FormGroup, Button, Panel, ButtonToolbar, DropdownButton, MenuItem} from 'react-bootstrap';
 import DataController from './DataController';
+import Resources from './Resources';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -80,7 +83,6 @@ class App extends React.Component {
         <Navigation getSearch={this.fetchContent} getDate={this.setDate}/>
         <Pages setPageUp={this.setPageUp} setPageDown={this.setPageDown} getPage={this.fetchContent} hits={this.state.hits} search={this.state.search}/>
         <Content getSearch={this.fetchContent} subject={this.state.subject} />
-        <Pages setPageUp={this.setPageUp} setPageDown={this.setPageDown} getPage={this.fetchContent} hits={this.state.hits} search={this.state.search}/>
       </div>
     );
   }
@@ -139,6 +141,7 @@ class Navigation extends React.Component {
             </FormGroup>
             <Button type="submit" onClick={this.searchClick}>Submit</Button>
           </Navbar.Form>
+          <Button><Link to="/resources" activeClassName="activeLink">Resources</Link></Button>
         </Navbar.Collapse>
       </Navbar>
     );
@@ -168,8 +171,7 @@ class Card extends React.Component {
       
       <div className="artCard">
         <a href={this.props.art.web_url}>
-        <Panel className="songList" header={this.props.art.headline.main}>
-          <img className="albmImg"  alt="thumbnail"/>
+        <Panel className="artPanel" header={this.props.art.headline.main}>
           <p>{this.props.art.snippet}</p>
         </Panel>
         </a>

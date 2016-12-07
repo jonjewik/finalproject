@@ -22,6 +22,7 @@ border: 1px solid gray;
 display: none; 
 }
 
+<<<<<<< HEAD
 .answers li { 
 list-style: upper-alpha; 
 } 
@@ -64,3 +65,9 @@ display: none;
 display: none;
 font-style: italic;
 }
+=======
+footer {
+    font-family: impact;
+}
+
+>>>>>>> bfbccd9fd0974ca1fd271c25898771c96d7ea3a2
