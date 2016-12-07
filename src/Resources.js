@@ -6,7 +6,7 @@ class Resources extends React.Component {
   render() {
     return (
       <div>
-      <h3> Resources </h3>
+      <h3 role="banner"> Resources </h3>
       <h4> LGBTQ </h4>
       <p>
         <ul>
@@ -18,7 +18,7 @@ class Resources extends React.Component {
         </ul>
       </p>
 
-      <h4> Equality </h4>
+      <h4 role="banner"> Equality </h4>
       <p>
         <ul>
           <li><a href="http://www.glbthotline.org/hotline.html">GLBT Hotline: <a href="tel:18888434564">1-888-843-4564</a></a></li>
@@ -28,7 +28,7 @@ class Resources extends React.Component {
           <li><a href="https://www2.ed.gov/policy/rights/guid/ocr/sex.html">Sex Discrimination Resources</a></li>
         </ul>
       </p>
-      <h4> Youth </h4>
+      <h4 role="banner"> Youth </h4>
       <p>
         <ul>
           <li><a href="http://www.pbs.org/wnet/cryforhelp/episodes/resources/hotlines-and-web-sites-for-teens/?p=11">National Suicide Hotline: <a href="tel:+18007842433">1-800-SUICIDE (784-2433)</a></a></li>
@@ -37,7 +37,7 @@ class Resources extends React.Component {
           <li><a href="https://www.jedfoundation.org">The Jed Foundation</a></li>
         </ul>
       </p>
-      <h4> Abuse Victims </h4>
+      <h4 role="banner"> Abuse Victims </h4>
       <p>
         <ul>
           <li><a href="http://www.thehotline.org/resources/">National Domestic Violence Hotline: <a href="tel:+18007997233">1-800-799-7233</a></a></li>
@@ -48,7 +48,7 @@ class Resources extends React.Component {
         </ul>
       </p>
 
-      <h4> Rape and Sexual Assault </h4>
+      <h4 role="banner"> Rape and Sexual Assault </h4>
       <p>
         <ul>
           <li><a href="http://www.rainn.org/get-help/national-sexual-assault-hotline">National Sexual Assault Hotline: <a href="tel:+18006564673">1-800-656-HOPE</a></a></li>
@@ -57,7 +57,7 @@ class Resources extends React.Component {
         </ul>
       </p>
 
-      <h4> Muslims </h4>
+      <h4 role="banner"> Muslims </h4>
       <p>
         <ul>
           <li><a href="http://www.mrcssi.com">Muslim Resource Center</a></li>
@@ -66,7 +66,7 @@ class Resources extends React.Component {
         </ul>
       </p>
 
-      <h4> Women </h4>
+      <h4 role="banner"> Women </h4>
       <p>
         <ul>
           <li><a href="http://www.aclu.org">American Civil Liberties Union (ACLU)</a></li>
