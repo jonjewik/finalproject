@@ -44,7 +44,7 @@ class App extends React.Component {
     this.setState({ page: p }, function() {
     });
   }
-  // Moves backwards to previous page on user click
+  // Moves backwards to previous page on click
   setPageDown(p) {
     p--;
     this.setState({ page: p })
