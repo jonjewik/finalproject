@@ -93,3 +93,5 @@ class Resources extends React.Component {
     );
   }
 }
+
+export default Resources
