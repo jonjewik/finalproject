@@ -1,5 +1,4 @@
 import React from 'react';
-import { Carousel, Button } from 'react-bootstrap';
 
 class Resources extends React.Component {
   render() {
@@ -94,4 +93,4 @@ class Resources extends React.Component {
   }
 }
 
-export default Resources
+export default Resources;
