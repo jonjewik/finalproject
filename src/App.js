@@ -72,7 +72,7 @@ class App extends React.Component {
       <div className="App">
         <div className="App-header">
           <span><i className="fa fa-newspaper-o fa-5x App-logo" aria-hidden="true"></i></span>
-          <h2>[untitled social justice resource center]</h2>
+          <h1>[untitled social justice resource center]</h1>
         </div>
         <p className="App-intro">
           Stay up to date on current events.
@@ -228,8 +228,8 @@ class Resources extends React.Component {
   render() {
     return (
       <div id="resources">
-        <h3 role="banner"> Resources </h3>
-        <h4> LGBTQ </h4>
+        <h2 role="banner"> Resources </h2>
+        <h3> LGBTQ </h3>
         <p><em>Know you are not alone:</em> LGBTQ+ people around the world have been through the same struggle. Check out the stories of hope and recovery at the bottom of the page to see how they cope.</p>
         <p><em>Build your support network:</em> Find allies in your life who will help keep you safe and who you can lean on if you feel depressed or suicidal.</p>
         <p><em>Talk to someone:</em> Silence isn’t strength. Don’t keep suicidal feelings to yourself. Lean on your support network, find a therapist or a support group.</p>
@@ -245,7 +245,7 @@ class Resources extends React.Component {
           </ul>
         </p>
 
-        <h4 role="banner"> Equality </h4>
+        <h3 role="banner"> Equality </h3>
         <p>
           <ul>
             <li><a href="http://www.glbthotline.org/hotline.html">GLBT Hotline: <a href="tel:18888434564">1-888-843-4564</a></a></li>
@@ -255,7 +255,7 @@ class Resources extends React.Component {
             <li><a href="https://www2.ed.gov/policy/rights/guid/ocr/sex.html">Sex Discrimination Resources</a></li>
           </ul>
         </p>
-        <h4 role="banner"> Youth </h4>
+        <h3 role="banner"> Youth </h3>
         <p><em>Ask for help:</em> Don’t be afraid to let your friends, family, or teachers know what you need when they ask; they want to help. You can also call the National Suicide Prevention Lifeline any time — calls are confidential.</p>
         <p><em>Remember that this feeling can be overcome:</em> Suicide is a permanent solution to a temporary problem. Family conflict, relationships, grades, sexual identity, and the loss of important people can seem impossible to deal with. But with support from others, you can.</p>
         <p><em>Evaluate the relationships in your life:</em> Love and friendship are all about respect. Toxic or unhealthy relationships can negatively affect you. Whether you’re dating or building new friendships, remember your rights.</p>
@@ -268,7 +268,7 @@ class Resources extends React.Component {
           </ul>
         </p>
 
-        <h4 role="banner"> Rape and Sexual Assault </h4>
+        <h3 role="banner"> Rape and Sexual Assault </h3>
         <p>
           <ul>
             <li><a href="http://www.rainn.org/get-help/national-sexual-assault-hotline">National Sexual Assault Hotline: <a href="tel:+18006564673">1-800-656-HOPE</a></a></li>
@@ -277,7 +277,7 @@ class Resources extends React.Component {
           </ul>
         </p>
 
-        <h4 role="banner"> Abuse Victims </h4>
+        <h3 role="banner"> Abuse Victims </h3>
         <p><em>Find A Therapist/Support Group:</em> Speaking to someone, whether by going to a therapist or by attending a support group, can help you feel better and improve your mental health. These resources can help you find a psychologist, psychiatrist, or support group near you.</p>
         <p><em>Build A Support Network:</em> You don't have to deal with crisis on your own. Those you choose to confide in can provide encouragement and help you through a crisis.</p>
         <p><em>Use Your Support Network:</em> Leaning on your support network can help you cope during difficult moments and is an important step in getting help and moving forward.</p>
@@ -293,7 +293,7 @@ class Resources extends React.Component {
           </ul>
         </p>
 
-        <h4 role="banner"> Muslims </h4>
+        <h3 role="banner"> Muslims </h3>
         <p>
           <ul>
             <li><a href="http://www.mrcssi.com">Muslim Resource Center</a></li>
@@ -302,7 +302,7 @@ class Resources extends React.Component {
           </ul>
         </p>
 
-        <h4 role="banner"> Women </h4>
+        <h3 role="banner"> Women </h3>
         <p>
           <ul>
             <li><a href="http://www.aclu.org">American Civil Liberties Union (ACLU)</a></li>
