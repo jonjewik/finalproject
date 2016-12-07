@@ -6,6 +6,7 @@ import Resources from './Resources';
 
 
 import './index.css';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import DataController from './DataController';
 

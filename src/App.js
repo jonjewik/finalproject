@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import {Navbar, FormControl, FormGroup, Button, Panel, ButtonToolbar, DropdownButton, MenuItem} from 'react-bootstrap';
 import DataController from './DataController';
 

@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "author": "Team Symmetry",
-  "homepage": "https://jonjewik.github.io/finalproject/build",
+  "homepage": "https://jonjewik.github.io/finalproject/build/",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
