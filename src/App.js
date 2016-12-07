@@ -1,39 +1,67 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import {Navbar, FormControl, FormGroup, Button, Panel} from 'react-bootstrap';
+import {Navbar, FormControl, FormGroup, Button, Panel, ButtonToolbar, DropdownButton, MenuItem} from 'react-bootstrap';
 import DataController from './DataController';
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      search: '',
       subject: [],
       date: '',
-      form: ''
+      hits: null,
+      page: 0
     };
     this.fetchContent = this.fetchContent.bind(this);
     this.setDate = this.setDate.bind(this);
+    //this.setPage = this.setPage.bind(this);
+    this.setPageUp = this.setPageUp.bind(this);
+    this.setPageDown = this.setPageDown.bind(this);
   }
+
   fetchContent(search) {
+    
     var firstThis = this; // necessary??
-    if (this.state.date !== "") {
-      DataController.dateSearch(search, this.state.date)
+    //firstThis.setState({page: this.state.page++});
+
+    if(this.state.page !== null) {
+      DataController.pageControl(search, this.state.date, this.state.page)
         .then(function (data) {
           firstThis.setState({
-            subject: data.response.docs
+            search: search,
+            subject: data.response.docs,
+            hits: data.response.meta.hits,
+            //page: 0
           })
         })
-    } else {
-      DataController.searchNYT(search)
-        .then(function (data) {
-          firstThis.setState({
-            subject: data.response.docs
-          })
-        })
-    }
+    // } else if (this.state.date !== "") {
+    //   DataController.dateSearch(search, this.state.date)
+    //     .then(function (data) {
+    //       firstThis.setState({
+    //         search: search,
+    //         subject: data.response.docs,
+    //         hits: data.response.meta.hits,
+    //         page: 0
+    //       })
+    //     })
+    } //else {
+    //   DataController.searchNYT(search)
+    //     .then(function (data) {
+    //       firstThis.setState({
+    //         search: search,
+    //         subject: data.response.docs,
+    //         hits: data.response.meta.hits,
+    //         page: 0
+    //       })
+    //     })
+    // }
 
     console.log(this.state.subject);
     console.log(this.state.date);
+    console.log(this.state.hits);
+    console.log(this.state.page);
+    console.log(this.state.search);
   }    // ?????????
   // fetchFilteredContent(search) {
   //   var firstThis = this; // necessary??
@@ -57,6 +85,36 @@ class App extends React.Component {
     console.log("setDate");
     console.log("NOW " + this.state.date);
   }
+
+  setPageUp(p) {
+   // p++;
+    console.log('page   ' + p);
+    // var firstThis = this;
+    // firstThis.setState({
+    //  date: date
+    // })
+    this.setState({ page: p }, function() {
+      console.log("NOW 1 " + this.state.page);
+    });
+    //this.fetchContent = this.fetchContent.bind(this);
+    //console.log("setDate");
+    console.log("NOW 2 " + this.state.page);
+  }
+
+  setPageDown(p) {
+  //  p--;
+    console.log('page   ' + p);
+    // var firstThis = this;
+    // firstThis.setState({
+    //  date: date
+    // })
+    this.setState({ page: p })
+    //this.fetchContent = this.fetchContent.bind(this);
+    //console.log("setDate");
+    console.log("NOW " + this.state.page);
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -68,7 +126,9 @@ class App extends React.Component {
           Stay up to date on current events.
         </p>
         <Navigation getSearch={this.fetchContent} getDate={this.setDate}/>
-        <Content getSearch={this.fetchContent} subject={this.state.subject}/>
+        <Pages setPageUp={this.setPageUp} setPageDown={this.setPageDown} getPage={this.fetchContent} hits={this.state.hits} search={this.state.search}/>
+        <Content getSearch={this.fetchContent} subject={this.state.subject} />
+        <Pages setPageUp={this.setPageUp} setPageDown={this.setPageDown} getPage={this.fetchContent} hits={this.state.hits} search={this.state.search}/>
       </div>
     );
   }
@@ -139,10 +199,13 @@ class Navigation extends React.Component {
 class Content extends React.Component {
   render() {
     var articles = this.props.subject.map(function (art) {
-      return <Card art={art} key={art._id}/>;
+      return <Card art={art} key={art._id}/>;  
     });
+
+    console.log("ARTICLES " + articles);
+
     return (
-      <div role= "main" className="contentArea">
+      <div role="main" className="contentArea">
         {articles}
       </div>
     );
@@ -152,6 +215,7 @@ class Card extends React.Component {
 
   // click event handler rather than an a tag
   render() {
+    //var pic = "http://www.nytimes.com/" + this.props.art.multimedia[0].url;
     return (
       
       <div className="artCard">
@@ -168,9 +232,116 @@ class Card extends React.Component {
 //src={this.props.art.multimedia[0].url}
 
 
+class Pages extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      page: 0
+    };
+    //this.pageClick = this.pageClick.bind(this);
+    this.pageFor = this.pageFor.bind(this);
+    this.pageBack = this.pageBack.bind(this);
+  }
+
+  pageClick() {
+
+    this.props.setPage(this.state.page);
+    this.props.getPage(this.state.search);
+
+    // pageClick(id) {
+    // console.log("this = " + this);
+    // if(document.querySelector(id) == null) {
+    //   console.log("oops");
+    // } else {
+    //   var s = "#" + id;
+    //   console.log("HEY " + document.querySelector(s).title); 
+    //   // var newValue = id.value;
+    //   // this.setState({page: newValue});
+    //   // this.props.setPage(this.state.page);
+    //   // this.props.getPage(this.props.search);
+    // }
+    // //this.value = "whu";
+    // console.log("HEY wow now " + this.value);
+    // // var newValue = id.value;
+    // // this.setState({page: newValue});
+    // // this.props.setPage(this.state.page);
+    // // this.props.getPage(this.props.search);
+    
+  }
+
+  pageFor() {
+    var n = this.state.page + 1;
+    console.log("N " + n);
+    this.setState({page: n});
+
+    this.props.setPageUp(this.state.page);
+    this.props.getPage(this.props.search);
+  }
+
+  pageBack() {
+    var n = this.state.page - 1;
+    this.setState({page: n});
+
+    this.props.setPageDown(this.state.page);
+    this.props.getPage(this.props.search);
+  }
+  
+  // click event handler rather than an a tag
+  render() {
+    var pages = [];
+    var num = this.props.hits / 10;
+    console.log("num" + num);
+    // pages = function() {
+    //   for(var i = 0; i < num; i++) {
+    //     return <MenuItem eventKey={i} value={i} onClick={this.pageClick} key={i}>Page {i + 1}</MenuItem>;
+    //   }
+    // };
+
+
+    // for(var i = 0; i < num; i++) {
+    //   var j = "pg" + i;
+    //   console.log(j);
+    //   pages.push(<MenuItem id={j} eventKey={i} value={i}  key={i} title={i} onClick={this.pageClick(j)}>Page {i + 1}</MenuItem>);
+
+    //   //if(pages.length !== 0) {
+    //   var s = "#" + j;
+    //   //console.log("NEW CHECK " + document.querySelector(s).title); 
+    //  // }
+      
+
+    // }
+    console.log("below " + pages);
+    return (
+      <div>
+        <Button onClick={this.pageBack}>Back</Button>
+        <Button onClick={this.pageFor}>Next</Button>
+        
+        
+        </div>
+    );
+
+
+// <ButtonToolbar>
+//             <DropdownButton bsSize="small" title="Page" id="dropdown-size-small">
+              
+//             </DropdownButton>
+//           </ButtonToolbar>
+    //{pages} ^^^^^^
+
+    // return (
+    //   <div className="pgBtn">
+    //     <Button onClick={this.pageClick}>
+    //     Page _
+    //     </Button>
+    //   </div>
+    // );
+  }
+}
+
+
 export default App;
 
-
+// pages ??
 
 
 
