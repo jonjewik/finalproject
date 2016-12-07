@@ -25,11 +25,13 @@
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .panel-heading {
   font-style: bold;
 }
-
 =======
+>>>>>>> 440a254a025803ed26d7b12018c0c170ec4168ed
+
 .artCard {
   flex: wrap;
   align-content: center;
@@ -37,6 +39,9 @@
   display: block;
 }
 
+<<<<<<< HEAD
 
 
 >>>>>>> 78475cf5fd15b1f193aa35ffd14cf9a2e381a05a
+=======
+>>>>>>> 440a254a025803ed26d7b12018c0c170ec4168ed
