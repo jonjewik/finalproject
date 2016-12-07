@@ -24,11 +24,24 @@
   to { transform: rotate(360deg); }
 }
 
+.panel-heading {
+  font-style: bold;
+}
 
 .artCard {
   flex: wrap;
   align-content: center;
   padding: 10px;
   display: block;
+  width: 90%;
+  margin-left: 5%;
 }
 
+.contentArea p{
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+.resources {
+  margin-left: 10%;
+}

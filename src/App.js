@@ -1,63 +1,73 @@
+// DELETE CONSOLE . LOGS
+
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import {Navbar, FormControl, FormGroup, Button, Panel} from 'react-bootstrap';
+import {Navbar, FormControl, FormGroup, Button, Panel, ButtonToolbar, DropdownButton, MenuItem} from 'react-bootstrap';
 import DataController from './DataController';
 // no error thrown if incorrect date format or search word inputted, simply returns error
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      search: '',
       subject: [],
       date: '',
-      form: ''
+      hits: null,
+      page: 0
     };
     this.fetchContent = this.fetchContent.bind(this);
     this.setDate = this.setDate.bind(this);
+    this.setPageUp = this.setPageUp.bind(this);
+    this.setPageDown = this.setPageDown.bind(this);
   }
+
   fetchContent(search) {
-    var firstThis = this; // necessary??
-    if (this.state.date !== "") {
-      DataController.dateSearch(search, this.state.date)
+    
+    var firstThis = this; 
+
+    if(this.state.page !== null) {
+      DataController.pageControl(search, this.state.date, this.state.page)
         .then(function (data) {
           firstThis.setState({
-            subject: data.response.docs
+            search: search,
+            subject: data.response.docs,
+            hits: data.response.meta.hits
           })
         })
-    } else {
-      DataController.searchNYT(search)
-        .then(function (data) {
-          firstThis.setState({
-            subject: data.response.docs
-          })
-        })
-    }
+    } 
 
     console.log(this.state.subject);
     console.log(this.state.date);
-  }    // ?????????
-  // fetchFilteredContent(search) {
-  //   var firstThis = this; // necessary??
-  //     DataController.searchNYT(search)
-  //     .then(function(data) {
-  //       firstThis.setState({
-  //         subject: data.response.docs
-  //       }
-  //     )
-  //   })
-  //   console.log(this.state.subject);
-  // }
+    console.log(this.state.hits);
+    console.log(this.state.page);
+    console.log(this.state.search);
+  }  
+
   setDate(newDate) {
     console.log('first' + newDate);
-    // var firstThis = this;
-    // firstThis.setState({
-    //  date: date
-    // })
     this.setState({ date: newDate })
-    //this.fetchContent = this.fetchContent.bind(this);
     console.log("setDate");
     console.log("NOW " + this.state.date);
   }
+
+  setPageUp(p) {
+    p++;
+    console.log('page   ' + p);
+    this.setState({ page: p }, function() {
+      console.log("NOW 1 " + this.state.page);
+    });
+    console.log("NOW 2 " + this.state.page);
+  }
+
+  setPageDown(p) {
+    p--;
+    console.log('page   ' + p);
+    this.setState({ page: p })
+    console.log("NOW " + this.state.page);
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -69,12 +79,17 @@ class App extends React.Component {
           "Stay up to date on current events"
         </p>
         <Navigation getSearch={this.fetchContent} getDate={this.setDate}/>
-        <Content getSearch={this.fetchContent} subject={this.state.subject}/>
+        <Pages setPageUp={this.setPageUp} setPageDown={this.setPageDown} getPage={this.fetchContent} hits={this.state.hits} search={this.state.search}/>
+        <Content getSearch={this.fetchContent} subject={this.state.subject} />
+        <Pages setPageUp={this.setPageUp} setPageDown={this.setPageDown} getPage={this.fetchContent} hits={this.state.hits} search={this.state.search}/>
       </div>
     );
   }
 }
 class Navigation extends React.Component {
+
+  // input type date for calendar 
+
   constructor(props) {
     super(props)
     this.state = {
@@ -94,10 +109,6 @@ class Navigation extends React.Component {
     } else {
       this.props.getSearch(this.state.searchValue);
     }
-    // this.props.getDate(this.state.date);
-    // this.props.getSearch(this.state.searchValue);
-    //console.log(this.state.searchValue);
-    //console.log(this.state.subject);
   }
   // grabs search bar input
   searchChange(event) {
@@ -114,7 +125,7 @@ class Navigation extends React.Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#">Search</a>
+            <a href="#">Search by text</a>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
@@ -125,9 +136,12 @@ class Navigation extends React.Component {
             </FormGroup>
             {' '}
             <FormGroup>
-              <FormControl type="text" placeholder="YYYYMMDD" onChange={this.startDate}/>
+            <Navbar.Brand>
+            <a href="#">Search by date</a>
+          </Navbar.Brand>
+              <FormControl type="text" placeholder="Begin date (YYYYMMDD)" onChange={this.startDate}/>
             </FormGroup>
-            <Button type="submit" onClick={this.searchClick}>Submit</Button>
+            <Button type="submit" onClick={this.searchClick}>Search</Button>
           </Navbar.Form>
         </Navbar.Collapse>
       </Navbar>
@@ -137,18 +151,25 @@ class Navigation extends React.Component {
 class Content extends React.Component {
   render() {
     var articles = this.props.subject.map(function (art) {
-      return <Card art={art} key={art._id}/>;
+      return <Card art={art} key={art._id}/>;  
     });
+
+    console.log("ARTICLES " + articles);
+
     return (
-      <div role= "main" className="contentArea">
+      <div role="main" className="contentArea">
         {articles}
       </div>
     );
   }
 }
+
+
 class Card extends React.Component {
+
   render() {
     return (
+      
       <div className="artCard">
         <a href={this.props.art.web_url}>
         <Panel className="songList" header={this.props.art.headline.main}>
@@ -160,5 +181,55 @@ class Card extends React.Component {
     );
   }
 }
-//src={this.props.art.multimedia[0].url}
+
+
+class Pages extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      page: 0
+    };
+    this.pageFor = this.pageFor.bind(this);
+    this.pageBack = this.pageBack.bind(this);
+  }
+
+  pageFor() {
+    var n = this.state.page + 1;
+    console.log("N " + n);
+    this.setState({page: n});
+
+    this.props.setPageUp(this.state.page);
+    this.props.getPage(this.props.search);
+  }
+
+  pageBack() {
+    var n = this.state.page - 1;
+    this.setState({page: n});
+
+    this.props.setPageDown(this.state.page);
+    this.props.getPage(this.props.search);
+  }
+  
+  // click event handler rather than an a tag
+  render() {
+    var pages = [];
+    var num = this.props.hits / 10;
+    console.log("num" + num);
+    console.log("below " + pages);
+    return (
+      <div>
+        <Button onClick={this.pageBack}>Back</Button>
+        <Button onClick={this.pageFor}>Next</Button>
+        
+        
+        </div>
+    );
+  }
+}
+
+
 export default App;
+
+// pages ??
+
+
