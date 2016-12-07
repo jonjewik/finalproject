@@ -1,11 +1,9 @@
-// DELETE CONSOLE . LOGS
-
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
 import {Navbar, FormControl, FormGroup, Button, Panel, ButtonToolbar, DropdownButton, MenuItem} from 'react-bootstrap';
 import DataController from './DataController';
-// no error thrown if incorrect date format or search word inputted, simply returns error
+
+// Creates overall website formatting
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -22,10 +20,9 @@ class App extends React.Component {
     this.setPageDown = this.setPageDown.bind(this);
   }
 
-  fetchContent(search) {
-    
+  // Handles when a user searches a topic
+  fetchContent(search) { 
     var firstThis = this; 
-
     if(this.state.page !== null) {
       DataController.pageControl(search, this.state.date, this.state.page)
         .then(function (data) {
@@ -36,35 +33,21 @@ class App extends React.Component {
           })
         })
     } 
-
-    console.log(this.state.subject);
-    console.log(this.state.date);
-    console.log(this.state.hits);
-    console.log(this.state.page);
-    console.log(this.state.search);
   }  
-
+  // Changes begin date of search range based on user input
   setDate(newDate) {
-    console.log('first' + newDate);
     this.setState({ date: newDate })
-    console.log("setDate");
-    console.log("NOW " + this.state.date);
   }
-
+  // Moves forward to next page on user click
   setPageUp(p) {
     p++;
-    console.log('page   ' + p);
     this.setState({ page: p }, function() {
-      console.log("NOW 1 " + this.state.page);
     });
-    console.log("NOW 2 " + this.state.page);
   }
-
+  // Moves backwards to previous page on user click
   setPageDown(p) {
     p--;
-    console.log('page   ' + p);
     this.setState({ page: p })
-    console.log("NOW " + this.state.page);
   }
 
 
@@ -86,10 +69,9 @@ class App extends React.Component {
     );
   }
 }
+
+// Creates navigational bar
 class Navigation extends React.Component {
-
-  // input type date for calendar 
-
   constructor(props) {
     super(props)
     this.state = {
@@ -100,9 +82,8 @@ class Navigation extends React.Component {
     this.searchChange = this.searchChange.bind(this);
     this.startDate = this.startDate.bind(this);
   }
-  // gets values for search bar input
+  // Handles when user submits search query
   searchClick() {
-    console.log(this.state.date);
     if (this.state.date !== "") {
       this.props.getDate(this.state.date);
       this.props.getSearch(this.state.searchValue);
@@ -110,53 +91,52 @@ class Navigation extends React.Component {
       this.props.getSearch(this.state.searchValue);
     }
   }
-  // grabs search bar input
+  // Grabs search bar input
   searchChange(event) {
     var newValue = event.target.value;
     this.setState({ searchValue: newValue });
   }
+  // Grabs begin date of searching range
   startDate(event) {
     var newDate = event.target.value;
     this.setState({ date: newDate });
-
   }
   render() {
     return (
       <Navbar>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="#">Search by text</a>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Navbar.Form pullLeft>
-            <FormGroup>
-              <FormControl type="text" placeholder="Search" onChange={this.searchChange}/>
-            </FormGroup>
-            {' '}
-            <FormGroup>
-            <Navbar.Brand>
-            <a href="#">Search by date</a>
-          </Navbar.Brand>
-              <FormControl type="text" placeholder="Begin date (YYYYMMDD)" onChange={this.startDate}/>
-            </FormGroup>
-            <Button type="submit" onClick={this.searchClick}>Search</Button>
+       <Navbar.Header id="bartitle">
+         <Navbar.Brand>
+           <a href="#">Search by text</a>
+         </Navbar.Brand>
+         <Navbar.Toggle />
+       </Navbar.Header>
+       <Navbar.Collapse>
+         <Navbar.Form pullLeft>
+           <FormGroup id="searchbox">
+             <FormControl type="text" placeholder="Search" onChange={this.searchChange}/>
+           </FormGroup>
+           {' '}
+           <FormGroup>
+           <Navbar.Brand>
+           <a href="#">Search by date</a>
+         </Navbar.Brand>
+             <FormControl id="datebox" type="text" placeholder="Begin date (YYYYMMDD)" onChange={this.startDate}/>
+           </FormGroup>
+           <Button type="submit" onClick={this.searchClick}>Search</Button>
           </Navbar.Form>
-          <Button href="#resources">Resources</Button>
+          <Button id="rsrcBtn" href="#resources">Resources</Button>
         </Navbar.Collapse>
       </Navbar>
     );
   }
 }
+
+// Formats main body
 class Content extends React.Component {
   render() {
     var articles = this.props.subject.map(function (art) {
       return <Card art={art} key={art._id}/>;  
     });
-
-    console.log("ARTICLES " + articles);
-
     return (
       <div role="main" className="contentArea">
         {articles}
@@ -165,16 +145,15 @@ class Content extends React.Component {
   }
 }
 
-
+// Formats the presentation of article cards
 class Card extends React.Component {
-
   render() {
-    return (
-      
+    return (  
       <div className="artCard">
         <a href={this.props.art.web_url}>
         <Panel className="artPanel" header={this.props.art.headline.main}>
           <h4 content={this.props.art.byline.original}>{this.props.art.byline.original}</h4>
+          <p>{this.props.art.snippet}</p>
         </Panel>
         </a>
       </div>
@@ -182,7 +161,7 @@ class Card extends React.Component {
   }
 }
 
-
+// Creats and formats page navigation buttons
 class Pages extends React.Component {
   constructor(props) {
     super(props)
@@ -193,40 +172,36 @@ class Pages extends React.Component {
     this.pageBack = this.pageBack.bind(this);
   }
 
+  // Handles when user hits the "next" button
   pageFor() {
     var n = this.state.page + 1;
-    console.log("N " + n);
     this.setState({page: n});
-
     this.props.setPageUp(this.state.page);
     this.props.getPage(this.props.search);
   }
 
+  // Handles when user hits the "back" button
   pageBack() {
     var n = this.state.page - 1;
     this.setState({page: n});
-
     this.props.setPageDown(this.state.page);
     this.props.getPage(this.props.search);
   }
   
-  // click event handler rather than an a tag
   render() {
     var pages = [];
     var num = this.props.hits / 10;
-    console.log("num" + num);
-    console.log("below " + pages);
     return (
       <div>
         <Button onClick={this.pageBack}>Back</Button>
         <Button onClick={this.pageFor}>Next</Button>
-        
-        
+           
         </div>
     );
   }
 }
 
+// Creates resources bank
 class Resources extends React.Component {
   render() {
     return (
@@ -320,9 +295,7 @@ class Resources extends React.Component {
   }
 }
 
-
 export default App;
 
-// pages ??
 
 

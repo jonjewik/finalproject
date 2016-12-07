@@ -49,6 +49,30 @@
 #resources {
   text-align: left;
   align-content: left;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-bottom: 20px;
+}
 
+footer {
+  margin-left: 10%;
+}
+ 
+#bartitle {
+ padding-top: 7px;
+}
+
+#searchbox {
+ margin-right: 7px;
+}
+
+#datebox {
+ margin-right: 10px;
+ margin-top: 8px;
+}
+
+#rsrcBtn {
+ margin-right: 10px;
+ margin-top: 15px;
 }
 

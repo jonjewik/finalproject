@@ -9,12 +9,6 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import DataController from './DataController';
 
-/*ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);*/
-
-
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={App}>

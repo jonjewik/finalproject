@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import { Carousel, Button } from 'react-bootstrap';
 import './App.css';
 import './Resources.css';
