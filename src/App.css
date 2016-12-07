@@ -42,7 +42,13 @@
   margin-right: 4%;
 }
 
-.resources {
-  margin-left: 10%;
+.panel-heading {
+  font-size: 2rem;
+}
+
+#resources {
+  text-align: left;
+  align-content: left;
+
 }
 
