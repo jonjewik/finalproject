@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 import { Carousel, Button } from 'react-bootstrap';
 
 class Resources extends React.Component {
